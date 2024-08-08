@@ -11,7 +11,7 @@ route.get('/tutor/:id', tutorController.getById)
 
 route.post('/tutor', tutorController.createTutor)
 
-route.put('/tutor/:id', (req, res)=>{})
+route.put('/tutor/:id', tutorController.updateTutor)
 
 route.delete('/tutor/:id', (req, res)=>{})
 
