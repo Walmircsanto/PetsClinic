@@ -6,7 +6,7 @@ class tutorClinic {
     createTutor = async (req,res) =>{
         let {name, phone,email,date_of_birth,zip_code} = req.body;
 
-      const newTutor =  tutor.create({name,phone,email,date_of_birth,zip_code}).then(resul =>{
+        const newTutor =  tutor.create({name,phone,email,date_of_birth,zip_code}).then(resul =>{
             res.status(201).json(resul);
         }).catch((err)=>{
             res.status(500).json(err);
