@@ -38,7 +38,6 @@ class tutorClinic {
     updateTutor = async (req, res) => {
         const id = req.params.id;
         console.log(id)
-        let {name, phone, email, date_of_birth, zip_code} = req.body;
         await tutor.update(req.body, {
             where: {id: id}
         }).then(result => {
