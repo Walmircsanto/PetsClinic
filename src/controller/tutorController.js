@@ -38,7 +38,7 @@ class tutorClinic {
     updateTutor = async (req, res) => {
         const id = req.params.id;
         console.log(id)
-        await tutor.update(req.body, {
+         tutor.update(req.body, {
             where: {id: id}
         }).then(result => {
             res.status(200).json(result);
@@ -47,8 +47,17 @@ class tutorClinic {
         })
     }
 
-    deleteTutor(id) {
-        return 'tutor deletado'
+    deleteTutor = async (req,res)=>{
+        const id = req.params.id;
+          tutor.destroy({
+            where: {
+                id: id
+            }
+        }).then(()=>{
+            res.status(200).json(`Tutor com do id ${id} deletado`);
+          }).catch((err)=>{
+              res.json(err)
+          })
     }
 }
 
