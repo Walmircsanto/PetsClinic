@@ -7,13 +7,13 @@ const tutorController = require("../controller/tutorController");
 //isso significa na implmentação do metodos o meu getAllController tem acesso ao oque esta vindo na minha request
 route.get('/tutors', tutorController.getAllTutor)
 
-route.get('/tutor/:id', tutorController.getById)
+route.get('/tutor/:id', tutorController.getById) // nesse metodo chamou outro metodo porem não uso () porque ??
 
 route.post('/tutor', tutorController.createTutor)
 
 route.put('/tutor/:id', tutorController.updateTutor)
 
-route.delete('/tutor/:id', (req, res)=>{})
+route.delete('/tutor/:id', tutorController.deleteTutor)
 
 
 module.exports = route;
