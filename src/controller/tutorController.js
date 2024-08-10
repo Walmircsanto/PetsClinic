@@ -12,7 +12,6 @@ class tutorClinic {
         const newTutor = tutor.create({name, phone, email, date_of_birth, zip_code}).then(resul => {
             //devolvo a minha response em Json para meu Client com status Create
             res.status(201).json(resul);
-
         }).catch((err) => {
             res.status(500).json(err);
         });
