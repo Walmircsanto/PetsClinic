@@ -2,8 +2,10 @@ const express = require('express');
 const app = express();
 const db = require('./db/conection')
 const PORT = 3000;
-const router = require('./router/tutorRouter');
+const tutorRouter = require('./router/tutorRouter');
 const bodyParser = require('body-parser');
+
+
 
 // Parse incoming requests with JSON payloads
 app.use(bodyParser.json());
@@ -12,10 +14,14 @@ app.use(express.json())
 // Parse incoming requests with urlencoded payloads
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(router)
 
 
+
+app.use(tutorRouter)
+app.use(db.sync)
 app.use(db.authenticate)
+
+
 
 // inicialização da aplicação
 app.listen(PORT,()=>{
