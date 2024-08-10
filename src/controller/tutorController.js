@@ -1,4 +1,6 @@
 const tutor = require("../models/tutors");
+const pets = require("../models/pets");
+
 
 // Como meu controller e minha porta de entrada da API e por aqui que recebo as request e devolvo as responses
 class tutorClinic {
@@ -10,6 +12,7 @@ class tutorClinic {
         const newTutor = tutor.create({name, phone, email, date_of_birth, zip_code}).then(resul => {
             //devolvo a minha response em Json para meu Client com status Create
             res.status(201).json(resul);
+
         }).catch((err) => {
             res.status(500).json(err);
         });
@@ -19,11 +22,14 @@ class tutorClinic {
 
     getById = async (req, res) => {
         const id = req.params.id;
-        tutor.findByPk(id).then(result => {
+        // como as classes estão associadas utilizamos o carregamento Eager Loading para traze os dados
+        //aparentemente so funciona com o findOne e não com o finByPk
+        tutor.findOne({
+            where:{id:id},
+            include:pets
+        }).then(result => {
             res.status(200).json(result);
-        }).catch((err) => {
-            console.log(err)
-        })
+        });
 
     }
 
