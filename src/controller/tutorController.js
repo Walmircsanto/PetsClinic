@@ -24,8 +24,8 @@ class tutorClinic {
         // como as classes estão associadas utilizamos o carregamento Eager Loading para traze os dados
         //aparentemente so funciona com o findOne e não com o finByPk
         tutor.findOne({
-            where:{id:id},
-            include:pets
+            where: {id: id},
+            include: pets
         }).then(result => {
             res.status(200).json(result);
         });
@@ -43,7 +43,7 @@ class tutorClinic {
     updateTutor = async (req, res) => {
         const id = req.params.id;
         console.log(id)
-         tutor.update(req.body, {
+        tutor.update(req.body, {
             where: {id: id}
         }).then(result => {
             res.status(200).json(result);
@@ -52,17 +52,32 @@ class tutorClinic {
         })
     }
 
-    deleteTutor = async (req,res)=>{
+    deleteTutor = async (req, res) => {
         const id = req.params.id;
-          tutor.destroy({
+        tutor.destroy({
             where: {
                 id: id
             }
-        }).then(()=>{
+        }).then(() => {
             res.status(200).json(`Tutor com do id ${id} deletado`);
+        }).catch((err) => {
+            res.json(err)
+        })
+    }
+
+    createPet = async (req, res) => {
+        let {name, species, carry, weight, date_of_birth, idTutor} = req.body;
+
+        const tuto = await tutor.findByPk(idTutor)
+        if (tuto) {
+          pets.create({name, species, carry, weight, date_of_birth, idTutor}).then(result=>{
+              res.status(200).json(result)
           }).catch((err)=>{
-              res.json(err)
+              console.log(err)
           })
+        }
+
+
     }
 }
 
