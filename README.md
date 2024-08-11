@@ -12,10 +12,43 @@ Esta API permite a criação de um tutor, e também a criação de varios pets l
 - Node: 20.12.2
 - express: 4.19.2
 - sequelize: 6.37.3
-- mysql: 3.11.0
+- mysql2: 3.11.0
 - body-parser: 1.20.2
 ### Passo a Passo para Execução
 #### 1. Clone o repositorio
 ```bash
 git clone https://github.com/Walmircsanto/PetsClinic.git
-cd PetsClinic 
+cd PetsClinic
+```
+### 2. Baixar as dependencias do packager.json
+```Node
+  npm install
+```
+### 3. Configure o banco de dados
+Crie um banco de dados no MySQL e ajuste as configurações de conexão na classe ``` conection.js ```
+```javascript
+const sequelize = new Sequelize(
+    'nome_do_BD',
+    'seu_usuario',
+    'sua_senha',
+    {
+    host:'localhost',
+    dialect: 'mysql',
+    define: {
+        timestamps: false
+    }
+
+});
+```
+### 4. Compile e Execute a aplicação
+Na construção desse projeto foi utilizado a IDE WebStorm, mas você pode utiliza a IDE da sua preferencia
+
+### 5. Acesse a API 
+Utilizamos o Postman como nosso client, mas você pode utilizar outros da sua preferencia.
+Acesse a aplicação pela porta ```http://localhost:3000/ ```
+
+## 🌐 Endpoints disponiveis da API
+- Tutor
+  - ``` GET /tutors``` : Lista todos os Tutores
+  
+
