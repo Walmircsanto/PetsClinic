@@ -31,8 +31,25 @@ class PetsClinic {
         console.log(`pets id ${id}`);
     }
 
-    updatePets(){
-        console.log('update pets');
+    updatePets = async (req,res) =>{
+        const petId = req.params.petId;
+        const tutorId = req.params.tutorId;
+        let {id,name, species, carry, weight, date_of_birth} = req.body;
+
+        const pet = await pets.findByPk(petId);
+        if(pet){
+          await  pets.update(
+                {name, species, carry, weight, date_of_birth},
+                {
+                where: {id: petId, idTutor: tutorId},
+                    returning: true
+            }).then(result=>{
+                res.json(result)
+            }).catch((err)=>{
+                res.status(500).json(err);
+            });
+        }
+
     }
 
     deletePets(id){
