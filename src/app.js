@@ -3,6 +3,7 @@ const app = express();
 const db = require('./db/conection')
 const PORT = 3000;
 const tutorRouter = require('./router/tutorRouter');
+const petRouter = require('./router/petsRouter');
 const bodyParser = require('body-parser');
 
 
@@ -18,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.use(tutorRouter)
+app.use(petRouter)
 app.use(db.sync)
 app.use(db.authenticate)
 
