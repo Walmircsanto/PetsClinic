@@ -11,7 +11,7 @@ route.get('/tutor/:id', petsController.finByIdPets) // nesse metodo que  chamo o
 
 route.post('/pet/:tutorId', petsController.createPet)
 
-route.put('/tutor/:id', petsController.updatePets)
+route.put('/pet/:petId/tutor/:tutorId', petsController.updatePets)
 
 route.delete('/tutor/:id', petsController.deletePets)
 
