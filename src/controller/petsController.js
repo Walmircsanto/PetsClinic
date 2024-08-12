@@ -6,14 +6,14 @@ class PetsClinic {
     createPet = async (req, res) => {
 
         //pegar Id que esta na URL
-        const idTu = req.params.id
-        let {name, species, carry, weight, date_of_birth, idTutor=idTu} = req.body;
+        const idTu = req.params.tutorId
+        let {name, species, carry, weight, date_of_birth,idTutor} = req.body;
+        idTutor = idTu
 
-        console.log(idTu)
         //verifica se o tutor daquele ID existe
-        const tuto = await tutor.findByPk(idTutor)
+        const tuto = await tutor.findByPk(idTu)
         if (tuto) {
-            pets.create({name, species, carry, weight, date_of_birth, idTutor}).then(result=>{
+          await  pets.create({name, species, carry, weight, date_of_birth, idTutor}).then(result=>{
                 res.status(200).json(result)
             }).catch((err)=>{
                 res.json(err)
