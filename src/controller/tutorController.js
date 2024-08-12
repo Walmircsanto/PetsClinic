@@ -59,7 +59,7 @@ class tutorClinic {
                 id: id
             }
         }).then(() => {
-            res.status(200).json(`Tutor com do id ${id} deletado`);
+            res.status(204).json(`Tutor com do id ${id} deletado`);
         }).catch((err) => {
             res.json(err)
         })
