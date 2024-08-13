@@ -33,7 +33,9 @@ class tutorClinic {
     }
 
     getAllTutor = async (req, res) => {
-        tutor.findAll().then(result => {
+        tutor.findAll({
+            include:pets
+        }).then(result => {
             res.status(200).json({result: result})
         }).catch((err) => {
             console.log(err)
@@ -59,25 +61,10 @@ class tutorClinic {
                 id: id
             }
         }).then(() => {
-            res.status(200).json(`Tutor com do id ${id} deletado`);
+            res.status(204).json(`Tutor com do id ${id} deletado`);
         }).catch((err) => {
             res.json(err)
         })
-    }
-
-    createPet = async (req, res) => {
-        let {name, species, carry, weight, date_of_birth, idTutor} = req.body;
-
-        const tuto = await tutor.findByPk(idTutor)
-        if (tuto) {
-          pets.create({name, species, carry, weight, date_of_birth, idTutor}).then(result=>{
-              res.status(200).json(result)
-          }).catch((err)=>{
-              console.log(err)
-          })
-        }
-
-
     }
 }
 

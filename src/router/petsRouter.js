@@ -9,11 +9,11 @@ route.get('/pets', petsController.getAllPets)
 
 route.get('/tutor/:id', petsController.finByIdPets) // nesse metodo que  chamo outro metodo porem não uso () porque ??
 
-route.post('/tutor', petsController.createPets)
+route.post('/pet/:tutorId', petsController.createPet)
 
-route.put('/tutor/:id', petsController.updatePets)
+route.put('/pet/:petId/tutor/:tutorId', petsController.updatePets)
 
-route.delete('/tutor/:id', petsController.deletePets)
+route.delete('/pet/:petId/tutor/:tutorId', petsController.deletePets)
 
 
 module.exports = route;

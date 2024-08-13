@@ -15,6 +15,5 @@ route.put('/tutor/:id', tutorController.updateTutor)
 
 route.delete('/tutor/:id', tutorController.deleteTutor)
 
-route.post('/pet/:tutorId', tutorController.createPet)
 
 module.exports = route;
