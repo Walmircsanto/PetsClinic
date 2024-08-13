@@ -13,7 +13,7 @@ route.post('/pet/:tutorId', petsController.createPet)
 
 route.put('/pet/:petId/tutor/:tutorId', petsController.updatePets)
 
-route.delete('pet/:petId/tutor/:tutorId', petsController.deletePets)
+route.delete('/pet/:petId/tutor/:tutorId', petsController.deletePets)
 
 
 module.exports = route;
