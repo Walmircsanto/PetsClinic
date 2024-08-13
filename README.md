@@ -43,12 +43,18 @@ const sequelize = new Sequelize(
 ### 4. Compile e Execute a aplicação
 Na construção desse projeto foi utilizado a IDE WebStorm, mas você pode utiliza a IDE da sua preferencia
 
-### 5. Acesse a API 
+### 5. Acesse a API no Swagger
 Utilizamos o Postman como nosso client, mas você pode utilizar outros da sua preferencia.
-Acesse a aplicação pela porta ```http://localhost:3000/ ```
+Acesse a aplicação no swagger pela porta ```http://localhost:3000/docs ```
 
 ## 🌐 Endpoints disponiveis da API
 - Tutor
   - ``` GET /tutors``` : Lista todos os Tutores
+  - ``` POST /tutor```: Criar um tutor
+  - ``` POST /pet/:tutorId ```: Criar um novo pet com um tutor associado
+  - ``` PUT /tutor/:id ```: Atualizar tutor
+  - ``` PUT /pet/:petId/tutor/:tutorId ```: Atualizar um pet
+  - ``` DELETE /tutor/:id ``` : Deletar tutor
+  - ``` DELETE /pet/:petId/tutor/:tutorId ```: Deletar pet
   
 
