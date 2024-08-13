@@ -31,7 +31,7 @@ const Tutor = db.define("tutor", {
 
 });
 
-Tutor.hasMany(Pet, {foreignKey:'idTutor'});
+Tutor.hasMany(Pet, {foreignKey:'idTutor', onDelete:'CASCADE'});
 Pet.belongsTo(Tutor,{foreignKey:'idTutor'})
 
 

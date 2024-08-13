@@ -33,7 +33,9 @@ class tutorClinic {
     }
 
     getAllTutor = async (req, res) => {
-        tutor.findAll().then(result => {
+        tutor.findAll({
+            include:pets
+        }).then(result => {
             res.status(200).json({result: result})
         }).catch((err) => {
             console.log(err)
