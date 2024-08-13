@@ -52,8 +52,22 @@ class PetsClinic {
 
     }
 
-    deletePets(id){
-        console.log(`pets id ${id}`);
+    deletePets = async(req,res) =>{
+       try{
+           const idPet = req.params.petId
+           const pet = await pets.findByPk(req.params.petId);
+           if(pet){
+               await pets.destroy({
+                   where:{
+                         id:  idPet
+                   }
+               });
+               res.status(204).json('Deletado')
+           }
+       }catch (err){
+           res.status(500)
+       }
+
     }
 
 }
